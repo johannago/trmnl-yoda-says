@@ -1,0 +1,41 @@
+{% assign words_of_wisdom = {{words_of_wisdom}} %}
+{% assign array_size = {{words_of_wisdom}} | size %}
+
+{% if array_size > 0 %}
+{% assign randomNumber = "now" | date: "%N" | modulo: array_size %}
+{% assign selectedQuote = words_of_wisdom[randomNumber] %}
+
+<div class="layout layout--col">
+  <div class="flex flex--col w--56">
+    <div class="markdown gap--large">
+      <div class="value value--small text--center">
+        {{ selectedQuote }}
+      </div>
+    </div>
+    <div class="md:flex--center portrait:flex--col">
+      <pre>
+            __.-._
+            '-._"7'
+            /'.-c
+            |  /T
+        snd _)_/LI
+        ---------------------------------
+      </pre>
+    </div>
+  </div>
+</div>
+{% else %}
+<div class="layout layout--col">
+  <div class="w-full flex flex--col">
+    <div class="markdown gap--large">
+      <div class="value value--small text--center">
+        No wisdom available.
+      </div>
+    </div>
+  </div>
+  {% endif %}
+  <div class="title_bar">
+    <img class="image image-stroke" src="https://lumiere-a.akamaihd.net/v1/images/image_cee17787.jpeg">
+    <span class="title">{{ trmnl.plugin_settings.instance_name }}</span>
+    <span class="instance">Words of Wisdom</span>
+  </div>
